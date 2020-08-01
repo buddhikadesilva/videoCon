@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1886260187/Advanced-Video-Android.iml" filepath="$PROJECT_DIR$/.idea/modules/1886260187/Advanced-Video-Android.iml" group="Advanced-Video-Android" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1074967681/lib-component.iml" filepath="$PROJECT_DIR$/.idea/modules/1074967681/lib-component.iml" group="Advanced-Video-Android/lib-component" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1460716277/lib-external-video.iml" filepath="$PROJECT_DIR$/.idea/modules/1460716277/lib-external-video.iml" group="Advanced-Video-Android/lib-external-video" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1125803477/lib-raw-data.iml" filepath="$PROJECT_DIR$/.idea/modules/-1125803477/lib-raw-data.iml" group="Advanced-Video-Android/lib-raw-data" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/449434179/sample-custom-render.iml" filepath="$PROJECT_DIR$/.idea/modules/449434179/sample-custom-render.iml" group="Advanced-Video-Android/sample-custom-render" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2049592617/sample-push-video.iml" filepath="$PROJECT_DIR$/.idea/modules/-2049592617/sample-push-video.iml" group="Advanced-Video-Android/sample-push-video" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-958025538/sample-raw-data.iml" filepath="$PROJECT_DIR$/.idea/modules/-958025538/sample-raw-data.iml" group="Advanced-Video-Android/sample-raw-data" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1455992445/sample-switch-external-video.iml" filepath="$PROJECT_DIR$/.idea/modules/-1455992445/sample-switch-external-video.iml" group="Advanced-Video-Android/sample-switch-external-video" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample-video-encrypt.iml" filepath="$PROJECT_DIR$/.idea/modules/sample-video-encrypt.iml" group="Advanced-Video-Android/sample-video-encrypt" />
+    </modules>
+  </component>
+</project>
