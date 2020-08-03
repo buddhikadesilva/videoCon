@@ -3,8 +3,10 @@ package io.agora.advancedvideo.activities;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -38,12 +40,20 @@ public abstract class BaseLiveActivity extends BaseActivity {
         initUI();
     }
 
+    public void showPopup(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.actionslist, popup.getMenu());
+        popup.show();
+    }
+
+
     private void initUI() {
         setContentView(R.layout.activity_live_room);
 
-        TextView roomName = findViewById(R.id.live_room_name);
-        roomName.setText(config().getChannelName());
-        roomName.setSelected(true);
+//        TextView roomName = findViewById(R.id.live_room_name);
+//        roomName.setText(config().getChannelName());
+//        roomName.setSelected(true);
 
         initUserIcon();
 
