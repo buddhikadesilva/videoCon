@@ -59,7 +59,7 @@
 
         >
 
-        <ImageButton
+        <ImageView
             android:id="@+id/user_add_icon"
             android:layout_width="38dp"
             android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
             android:layout_marginStart="@dimen/live_name_board_icon_margin"
             android:layout_marginLeft="@dimen/live_name_board_icon_margin"
 
-            android:onClick="showPopup"
+
 
             android:src="@drawable/ic_baseline_person_add_24" />
 
@@ -134,7 +134,7 @@
             android:layout_marginStart="@dimen/live_bottom_btn_margin"
             android:layout_marginLeft="@dimen/live_bottom_btn_margin"
             android:layout_toRightOf="@id/live_btn_mute_video"
-            android:onClick="onMoreClicked"
+            android:onClick="showPopup"
             android:scaleType="centerCrop"
 
             android:src="@drawable/ic_baseline_more_vert_24" />
