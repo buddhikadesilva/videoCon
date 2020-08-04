@@ -44,25 +44,24 @@ public abstract class BaseLiveActivity extends BaseActivity implements PopupMenu
     public void showPopup(View v) {
         PopupMenu popup = new PopupMenu(this, v);
         popup.setOnMenuItemClickListener(this);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.actionslist, popup.getMenu());
+        //MenuInflater inflater = popup.getMenuInflater();
+        popup.inflate(R.menu.actionslist);
         popup.show();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-//        switch (item.getItemId()) {
-//            case R.id.toggle_cam:
-//                onSwitchCameraClicked(View view);
-//                return true;
-//            case R.id.screen_share:
-//                showHelp();
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//       //  Handle item selection
+//        int itemId = item.getItemId();
+//        if (itemId == R.id.toggle_cam) {
+//           // onSwitchCameraClicked(View view);
+//            System.out.println("toggle");
+//            return true;
+//        } else if (itemId == R.id.screen_share) {
+//            System.out.println("SS");
+//            return true;
+//        } return super.onOptionsItemSelected(item);
+//    }
 
 
     private void initUI() {
@@ -154,4 +153,17 @@ public abstract class BaseLiveActivity extends BaseActivity implements PopupMenu
     protected abstract void onMuteVideoButtonClicked(View view);
 
     protected abstract void onMoreButtonClicked(View view);
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.toggle_cam) {
+            rtcEngine().switchCamera();
+            return true;
+        } else if (itemId == R.id.screen_share) {
+
+            return true;
+        } return super.onOptionsItemSelected(item);
+
+    }
 }
