@@ -145,7 +145,7 @@
             android:layout_height="@dimen/live_bottom_btn_size"
 
             android:layout_centerInParent="true"
-            android:onClick="onPushStreamClicked"
+            android:onClick="onLeaveClicked"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/call" />
 
