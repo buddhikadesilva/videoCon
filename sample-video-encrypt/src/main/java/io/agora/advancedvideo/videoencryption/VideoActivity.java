@@ -79,7 +79,7 @@ public class VideoActivity extends BaseLiveActivity {
         }
 
         SurfaceView surface = RtcEngine.CreateRendererView(this);
-        surface.setZOrderOnTop(true);
+        surface.setZOrderOnTop(false);
         rtcEngine().setupRemoteVideo(new VideoCanvas(surface, VideoCanvas.RENDER_MODE_HIDDEN, uid));
         mRemotePreview.addView(surface);
     }

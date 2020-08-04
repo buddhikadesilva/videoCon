@@ -1,0 +1,25 @@
+-- Merging decision tree log ---
+manifest
+ADDED from F:\Share my knowledge to others\gitHub\Advanced-Video\Screensharing\Agora-Screen-Sharing-Android\libagorartc\AndroidManifest.xml:1:1-4:12
+INJECTED from F:\Share my knowledge to others\gitHub\Advanced-Video\Screensharing\Agora-Screen-Sharing-Android\libagorartc\AndroidManifest.xml:1:1-4:12
+INJECTED from F:\Share my knowledge to others\gitHub\Advanced-Video\Screensharing\Agora-Screen-Sharing-Android\libagorartc\AndroidManifest.xml:1:1-4:12
+	package
+		ADDED from F:\Share my knowledge to others\gitHub\Advanced-Video\Screensharing\Agora-Screen-Sharing-Android\libagorartc\AndroidManifest.xml:1:11-33
+		INJECTED from F:\Share my knowledge to others\gitHub\Advanced-Video\Screensharing\Agora-Screen-Sharing-Android\libagorartc\AndroidManifest.xml
+		INJECTED from F:\Share my knowledge to others\gitHub\Advanced-Video\Screensharing\Agora-Screen-Sharing-Android\libagorartc\AndroidManifest.xml
+	xmlns:android
+		ADDED from F:\Share my knowledge to others\gitHub\Advanced-Video\Screensharing\Agora-Screen-Sharing-Android\libagorartc\AndroidManifest.xml:2:11-69
+uses-sdk
+INJECTED from F:\Share my knowledge to others\gitHub\Advanced-Video\Screensharing\Agora-Screen-Sharing-Android\libagorartc\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from F:\Share my knowledge to others\gitHub\Advanced-Video\Screensharing\Agora-Screen-Sharing-Android\libagorartc\AndroidManifest.xml
+INJECTED from F:\Share my knowledge to others\gitHub\Advanced-Video\Screensharing\Agora-Screen-Sharing-Android\libagorartc\AndroidManifest.xml
+INJECTED from F:\Share my knowledge to others\gitHub\Advanced-Video\Screensharing\Agora-Screen-Sharing-Android\libagorartc\AndroidManifest.xml
+INJECTED from F:\Share my knowledge to others\gitHub\Advanced-Video\Screensharing\Agora-Screen-Sharing-Android\libagorartc\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from F:\Share my knowledge to others\gitHub\Advanced-Video\Screensharing\Agora-Screen-Sharing-Android\libagorartc\AndroidManifest.xml
+		ADDED from F:\Share my knowledge to others\gitHub\Advanced-Video\Screensharing\Agora-Screen-Sharing-Android\libagorartc\AndroidManifest.xml
+		INJECTED from F:\Share my knowledge to others\gitHub\Advanced-Video\Screensharing\Agora-Screen-Sharing-Android\libagorartc\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from F:\Share my knowledge to others\gitHub\Advanced-Video\Screensharing\Agora-Screen-Sharing-Android\libagorartc\AndroidManifest.xml
+		ADDED from F:\Share my knowledge to others\gitHub\Advanced-Video\Screensharing\Agora-Screen-Sharing-Android\libagorartc\AndroidManifest.xml
+		INJECTED from F:\Share my knowledge to others\gitHub\Advanced-Video\Screensharing\Agora-Screen-Sharing-Android\libagorartc\AndroidManifest.xml

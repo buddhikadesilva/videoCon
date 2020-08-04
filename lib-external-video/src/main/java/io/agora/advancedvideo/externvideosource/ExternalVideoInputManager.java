@@ -31,7 +31,6 @@ public class ExternalVideoInputManager implements IVideoSource {
     public static final String FLAG_SCREEN_HEIGHT = "screen-height";
     public static final String FLAG_SCREEN_DPI = "screen-dpi";
     public static final String FLAG_FRAME_RATE = "screen-frame-rate";
-
     private static final int DEFAULT_SCREEN_WIDTH = 640;
     private static final int DEFAULT_SCREEN_HEIGHT = 480;
     private static final int DEFAULT_SCREEN_DPI = 3;

@@ -18,6 +18,7 @@ import io.agora.advancedvideo.R;
 import io.agora.advancedvideo.annotations.DisplayActivity;
 import io.agora.rtc.Constants;
 
+
 @DisplayActivity(
     SubClasses = {
         "io.agora.advancedvideo.switchvideoinput.SwitchVideoInputActivity",
@@ -34,6 +35,8 @@ public abstract class BaseLiveActivity extends BaseActivity implements PopupMenu
     protected ImageView mMuteVideoBtn;
 
     protected boolean mIsBroadcaster;
+
+   // private ScreenSharingClient mSSClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
