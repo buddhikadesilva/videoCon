@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
@@ -26,7 +27,7 @@ import io.agora.rtc.Constants;
         "io.agora.advancedvideo.rawdatasample.RawDataActivity"
     }
 )
-public abstract class BaseLiveActivity extends BaseActivity {
+public abstract class BaseLiveActivity extends BaseActivity implements PopupMenu.OnMenuItemClickListener {
     protected RelativeLayout videoContainer;
 
     protected ImageView mMuteAudioBtn;
@@ -42,9 +43,25 @@ public abstract class BaseLiveActivity extends BaseActivity {
 
     public void showPopup(View v) {
         PopupMenu popup = new PopupMenu(this, v);
+        popup.setOnMenuItemClickListener(this);
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.actionslist, popup.getMenu());
         popup.show();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+//        switch (item.getItemId()) {
+//            case R.id.toggle_cam:
+//                onSwitchCameraClicked(View view);
+//                return true;
+//            case R.id.screen_share:
+//                showHelp();
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
     }
 
 
