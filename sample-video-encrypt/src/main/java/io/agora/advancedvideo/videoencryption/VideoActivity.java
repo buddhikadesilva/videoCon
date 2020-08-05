@@ -241,8 +241,20 @@ private RtcEngine mRtcEngine;
     }
 
     protected void onMuteVideoButtonClicked(View view) {
-        rtcEngine().muteLocalVideoStream(view.isActivated());
-        view.setActivated(!view.isActivated());
+
+//        rtcEngine().muteLocalVideoStream(view.isActivated());
+//        view.setActivated(!view.isActivated());
+
+        if(view.isActivated()){
+            rtcEngine().muteLocalVideoStream(true);
+            view.setActivated(true);
+      //      mSS = true;
+        }else{
+            mSS = false;
+            rtcEngine().muteLocalVideoStream(false);
+            view.setActivated(false);
+        }
+
     }
 
 
