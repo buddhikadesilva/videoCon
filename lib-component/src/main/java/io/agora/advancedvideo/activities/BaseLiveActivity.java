@@ -3,9 +3,14 @@ package io.agora.advancedvideo.activities;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
@@ -17,7 +22,11 @@ import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import io.agora.advancedvideo.R;
 import io.agora.advancedvideo.annotations.DisplayActivity;
 import io.agora.rtc.Constants;
-
+import io.agora.rtc.IRtcEngineEventHandler;
+import io.agora.rtc.RtcEngine;
+import io.agora.rtc.ss.ScreenSharingClient;
+import io.agora.rtc.video.VideoCanvas;
+import io.agora.rtc.video.VideoEncoderConfiguration;
 
 @DisplayActivity(
     SubClasses = {
@@ -28,7 +37,12 @@ import io.agora.rtc.Constants;
         "io.agora.advancedvideo.rawdatasample.RawDataActivity"
     }
 )
+
+
 public abstract class BaseLiveActivity extends BaseActivity implements PopupMenu.OnMenuItemClickListener {
+
+    private static final String LOG_TAG = BaseLiveActivity.class.getSimpleName();
+
     protected RelativeLayout videoContainer;
 
     protected ImageView mMuteAudioBtn;
@@ -36,7 +50,25 @@ public abstract class BaseLiveActivity extends BaseActivity implements PopupMenu
 
     protected boolean mIsBroadcaster;
 
-   // private ScreenSharingClient mSSClient;
+    private ScreenSharingClient mSSClient;
+    private VideoEncoderConfiguration mVEC;
+    private boolean mSS = false;
+
+
+    private RtcEngine mRtcEngine;
+
+    private final ScreenSharingClient.IStateListener mListener = new ScreenSharingClient.IStateListener() {
+        @Override
+        public void onError(int error) {
+            Log.e(LOG_TAG, "Screen share service error happened: " + error);
+        }
+
+        @Override
+        public void onTokenWillExpire() {
+            Log.d(LOG_TAG, "Screen share service token will expire");
+            mSSClient.renewToken(null); // Replace the token with your valid token
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +82,23 @@ public abstract class BaseLiveActivity extends BaseActivity implements PopupMenu
         //MenuInflater inflater = popup.getMenuInflater();
         popup.inflate(R.menu.actionslist);
         popup.show();
+    }
+
+    public void onScreenSharingClicked(View view) {
+        Button button = (Button) view;
+        boolean selected = button.isSelected();
+        button.setSelected(!selected);
+
+        if (button.isSelected()) {
+            mSSClient.start(getApplicationContext(), getResources().getString(R.string.agora_app_id), null,
+                    getResources().getString(R.string.live_room_name), Constant.SCREEN_SHARE_UID, mVEC);
+          //  button.setText(getResources().getString(R.string.label_stop_sharing_your_screen));
+            mSS = true;
+        } else {
+            mSSClient.stop(getApplicationContext());
+          //  button.setText(getResources().getString(R.string.label_start_sharing_your_screen));
+            mSS = false;
+        }
     }
 
 //    @Override
@@ -95,6 +144,9 @@ public abstract class BaseLiveActivity extends BaseActivity implements PopupMenu
                 io.agora.advancedvideo.Constants.DEFAULT_BEAUTY_OPTIONS);
 
         videoContainer = findViewById(R.id.live_video_container);
+
+        mSSClient = ScreenSharingClient.getInstance();
+        mSSClient.setListener(mListener);
         onInitializeVideo();
     }
 
@@ -169,4 +221,57 @@ public abstract class BaseLiveActivity extends BaseActivity implements PopupMenu
         } return super.onOptionsItemSelected(item);
 
     }
+
+    private void setupRemoteView(int uid) {
+        SurfaceView ssV = RtcEngine.CreateRendererView(getApplicationContext());
+        ssV.setZOrderOnTop(true);
+        ssV.setZOrderMediaOverlay(true);
+        videoContainer.addView(ssV, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        mRtcEngine.setupRemoteVideo(new VideoCanvas(ssV, VideoCanvas.RENDER_MODE_FIT, uid));
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        leaveChannel();
+        RtcEngine.destroy();
+        mRtcEngine = null;
+        if (mSS) {
+            mSSClient.stop(getApplicationContext());
+        }
+    }
+    private void joinChannel() {
+        mRtcEngine.joinChannel(null, getResources().getString(R.string.live_room_name),"Extra Optional Data", Constant.CAMERA_UID); // if you do not specify the uid, we will generate the uid for you
+    }
+
+    private void leaveChannel() {
+        mRtcEngine.leaveChannel();
+    }
+
+    private final IRtcEngineEventHandler mRtcEventHandler = new IRtcEngineEventHandler() {
+
+        @Override
+        public void onUserOffline(int uid, int reason) {
+            Log.d(LOG_TAG, "onUserOffline: " + uid + " reason: " + reason);
+        }
+
+        @Override
+        public void onJoinChannelSuccess(String channel, int uid, int elapsed) {
+            Log.d(LOG_TAG, "onJoinChannelSuccess: " + channel + " " + elapsed);
+        }
+
+        @Override
+        public void onUserJoined(final int uid, int elapsed) {
+            Log.d(LOG_TAG, "onUserJoined: " + (uid&0xFFFFFFL));
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if(uid == Constant.SCREEN_SHARE_UID) {
+                        setupRemoteView(uid);
+                    }
+                }
+            });
+        }
+    };
 }

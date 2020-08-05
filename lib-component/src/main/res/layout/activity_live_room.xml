@@ -20,6 +20,13 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginLeft="0dp"
                 android:scaleType="centerCrop" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                android:onClick="onScreenSharingClicked"/>
         </RelativeLayout>
     </FrameLayout>
 
@@ -59,7 +66,7 @@
 
         >
 
-        <ImageView
+        <ImageButton
             android:id="@+id/user_add_icon"
             android:layout_width="38dp"
             android:layout_height="wrap_content"
@@ -69,7 +76,7 @@
             android:layout_marginStart="@dimen/live_name_board_icon_margin"
             android:layout_marginLeft="@dimen/live_name_board_icon_margin"
 
-
+            android:onClick="onScreenSharingClicked"
 
             android:src="@drawable/ic_baseline_person_add_24" />
 
@@ -179,5 +186,7 @@
             android:scaleType="centerCrop"
 
             android:src="@drawable/video" />
+
+
     </RelativeLayout>
 </RelativeLayout>

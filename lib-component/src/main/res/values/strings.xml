@@ -34,4 +34,5 @@
 
     <!-- Legal digits for channel names -->
     <string name="legal_channel_name_characters" translatable="false">&#xA0;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&amp;()+,-:;&lt;=.>?@[]^_`{|}~</string>
+    <string name="live_room_name" />
 </resources>
