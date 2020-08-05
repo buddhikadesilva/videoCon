@@ -126,7 +126,16 @@ private RtcEngine mRtcEngine;
         SurfaceView ssV = RtcEngine.CreateRendererView(getApplicationContext());
         ssV.setZOrderOnTop(true);
         ssV.setZOrderMediaOverlay(true);
-        mLocalPreview.addView(ssV, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+
+        if(mSS) {
+
+            mLocalPreview.addView(ssV, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, VideoCanvas.RENDER_MODE_FIT));
+        }else{
+
+            mLocalPreview.addView(ssV, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        }
+
+     //   mLocalPreview.addView(ssV, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mRtcEngine.setupRemoteVideo(new VideoCanvas(ssV, VideoCanvas.RENDER_MODE_FIT, uid));
     }
 
@@ -247,12 +256,12 @@ private RtcEngine mRtcEngine;
 
         if(view.isActivated()){
             rtcEngine().muteLocalVideoStream(true);
-            view.setActivated(true);
+            view.setActivated(false);
       //      mSS = true;
         }else{
             mSS = false;
             rtcEngine().muteLocalVideoStream(false);
-            view.setActivated(false);
+            view.setActivated(true);
         }
 
     }
