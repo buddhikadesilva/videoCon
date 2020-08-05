@@ -52,6 +52,8 @@ public class VideoActivity extends BaseLiveActivity {
         ));
     }
 
+
+
     private void setupLocalVideo() {
         if (!mIsBroadcaster) {
             return;
@@ -104,6 +106,8 @@ public class VideoActivity extends BaseLiveActivity {
     protected void onLeaveButtonClicked(View view) {
 
     }
+
+
 
     @Override
     public void finish() {

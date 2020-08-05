@@ -74,6 +74,7 @@ public abstract class BaseLiveActivity extends BaseActivity implements PopupMenu
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initUI();
+        initAgoraEngineAndJoinChannel();
     }
 
     public void showPopup(View v) {
@@ -82,6 +83,23 @@ public abstract class BaseLiveActivity extends BaseActivity implements PopupMenu
         //MenuInflater inflater = popup.getMenuInflater();
         popup.inflate(R.menu.actionslist);
         popup.show();
+    }
+
+    private void initAgoraEngineAndJoinChannel() {
+        initializeAgoraEngine();
+        setupVideoProfile();
+      //  setupLocalVideo();
+        joinChannel();
+    }
+
+    private void initializeAgoraEngine() {
+        try {
+            mRtcEngine = RtcEngine.create(getApplicationContext(), getString(R.string.agora_app_id), mRtcEventHandler);
+        } catch (Exception e) {
+            Log.e(LOG_TAG, Log.getStackTraceString(e));
+
+            throw new RuntimeException("NEED TO check rtc sdk init fatal error\n" + Log.getStackTraceString(e));
+        }
     }
 
     public void onScreenSharingClicked(View view) {
@@ -247,6 +265,17 @@ public abstract class BaseLiveActivity extends BaseActivity implements PopupMenu
 
     private void leaveChannel() {
         mRtcEngine.leaveChannel();
+    }
+
+    private void setupVideoProfile() {
+        mRtcEngine.setChannelProfile(Constants.CHANNEL_PROFILE_LIVE_BROADCASTING);
+        mRtcEngine.enableVideo();
+        mVEC = new VideoEncoderConfiguration(VideoEncoderConfiguration.VD_640x360,
+                VideoEncoderConfiguration.FRAME_RATE.FRAME_RATE_FPS_15,
+                VideoEncoderConfiguration.STANDARD_BITRATE,
+                VideoEncoderConfiguration.ORIENTATION_MODE.ORIENTATION_MODE_FIXED_PORTRAIT);
+        mRtcEngine.setVideoEncoderConfiguration(mVEC);
+        mRtcEngine.setClientRole(Constants.CLIENT_ROLE_BROADCASTER);
     }
 
     private final IRtcEngineEventHandler mRtcEventHandler = new IRtcEngineEventHandler() {
