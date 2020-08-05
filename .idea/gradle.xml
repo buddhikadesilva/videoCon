@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/sample-raw-data" />
             <option value="$PROJECT_DIR$/sample-switch-external-video" />
             <option value="$PROJECT_DIR$/sample-video-encrypt" />
+            <option value="$PROJECT_DIR$/screensharing" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
