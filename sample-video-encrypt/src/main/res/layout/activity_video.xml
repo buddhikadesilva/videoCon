@@ -3,18 +3,26 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <FrameLayout
         android:id="@+id/remote_preview_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="197dp"
+        android:layout_height="282dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="364dp"
+        android:layout_toStartOf="@+id/local_preview_layout">
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
-            android:onClick="onScreenSharingClicked2"/>
+            android:onClick="onScreenSharingClicked2"
+            android:text="Button" />
     </FrameLayout>
+
     <FrameLayout
         android:id="@+id/local_preview_layout"
         android:layout_width="@dimen/remote_preview_width"
